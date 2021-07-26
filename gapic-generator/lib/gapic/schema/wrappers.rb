@@ -268,6 +268,12 @@ module Gapic
         parent.ruby_package
       end
 
+      # @return [boolean] True if this service is marked as deprecated, false
+      # otherwise.
+      def is_deprecated?
+        options[:deprecated] if options
+      end
+
       # @return [Array<Google::Api::ResourceDescriptor>] A representation of the resource.
       #   This is generally intended to be attached to the "name" field.
       #   See `google/api/resource.proto`.
@@ -336,11 +342,14 @@ module Gapic
         options[:".google.longrunning.operation_info"] if options
       end
 
+      # @return [boolean] True if this method is marked as deprecated, false
+      # otherwise.
+      def is_deprecated?
+        options[:deprecated] if options
+      end
+
       # @return [Google::Api::HttpRule] The HTTP bindings for this method. See
       #   `google/api/http.proto`.
-      def http
-        options[:".google.api.http"] if options
-      end
 
       # @!method name
       #   @return [String] the unqualified name of the method.
